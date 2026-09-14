@@ -11,6 +11,8 @@ function TeamDashboard() {
         role="Backend Developer"
         tasksCompleted={12}
         isActive={true}
+        // Author: Benigne Uwitonze
+        bio="Builds reliable server-side features."
         />
         <MemberCard
         name="Samuella"

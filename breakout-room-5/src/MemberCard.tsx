@@ -7,10 +7,12 @@ interface MemberCardProps {
     tasksCompleted: number;
     // Author: Ineza Samuella
     isActive: boolean;
+    // Author: Benigne Uwitonze
+    bio?: string;
 }
 
 
-function MemberCard({ name, role,tasksCompleted,isActive }: MemberCardProps) {
+function MemberCard({ name, role,tasksCompleted,isActive,bio }: MemberCardProps) {
     return (
        <div>
         <h3>{name}</h3>
@@ -21,6 +23,7 @@ function MemberCard({ name, role,tasksCompleted,isActive }: MemberCardProps) {
 
         //Author: Ineza Samuella
         <p>Status: {isActive ? 'Active' : 'Inactive'}</p>
+        {bio && <p>Bio: {bio}</p>}
        </div>
     );
 }
