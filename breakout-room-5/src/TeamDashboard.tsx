@@ -6,6 +6,7 @@ import './TeamDashboard.css';
 // Author: owen-stud123 - Tasks 4-5, 8-9: TeamDashboard component and JSX structure.
 // Author: Christian Ishimwe
 interface Member {
+  id: number;
   name: string;
   role?: string;
   tasksCompleted: number;
@@ -13,8 +14,10 @@ interface Member {
   bio?: string;
 }
 
+// Author: Christian Ishimwe
 const initialMembers: Member[] = [
   {
+    id: 1,
     name: "Alice",
     role: "Backend Developer",
     tasksCompleted: 12,
@@ -22,6 +25,7 @@ const initialMembers: Member[] = [
     bio: "Builds reliable server-side features."
   },
   {
+    id: 2,
     name: "Samuella",
     role: "UI/UX Designer",
     tasksCompleted: 5,
@@ -66,6 +70,9 @@ function TeamDashboard() {
     setMembers((currentMembers) => [
       ...currentMembers,
       {
+        id: currentMembers.length > 0
+          ? Math.max(...currentMembers.map((member) => member.id)) + 1
+          : 1,
         name: trimmedName,
         role: 'New Member',
         tasksCompleted: 0,

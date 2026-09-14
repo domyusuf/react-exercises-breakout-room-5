@@ -8,7 +8,7 @@ import './MemberCard.css';
 // Author: owen-stud123 - Task 10: reusable component.
 interface MemberCardProps {
     name: string;
-    // Updated by: Christian Ishimwe
+    // Author: Christian Ishimwe
    role?: string;
     // Author: Alice Uwase
     tasksCompleted: number;
@@ -21,7 +21,7 @@ interface MemberCardProps {
 }
 
   // Author: owen-stud123 - Tasks 46-50: final integration.
-  // Updated by:  Christian Ishimwe
+  // Author:  Christian Ishimwe
   function MemberCard({ name, role = "Team Member", tasksCompleted, isActive, bio, onRemove, onToggleStatus }: MemberCardProps) {
   // Author: Benigne Uwitonze - Task 27
   const cardStyle: CSSProperties = { marginBottom: '10px' };
