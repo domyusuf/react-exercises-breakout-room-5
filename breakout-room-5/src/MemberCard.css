@@ -37,6 +37,22 @@
   font-style: italic;
 }
 
+.member-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.member-actions button {
+  cursor: pointer;
+  padding: 6px 9px;
+}
+
+.remove-button {
+  color: #9f1239;
+}
+
 /* Author: Benigne Uwitonze - Task 26 */
 .member-status.active {
   color: green;

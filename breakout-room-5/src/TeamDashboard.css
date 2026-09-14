@@ -7,6 +7,30 @@
   align-items: start;
 }
 
+.member-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.member-controls input {
+  min-width: 220px;
+  padding: 8px 10px;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.selected-filter {
+  font-weight: 700;
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}
+
 @media (max-width: 600px) {
   .member-grid {
     grid-template-columns: 1fr;

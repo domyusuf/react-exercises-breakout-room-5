@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 import MemberCard from './MemberCard';
-// @ts-ignore CSS files are handled by the bundler and do not have TypeScript declarations.
 import './TeamDashboard.css';
 
+// Author: owen-stud123 - Tasks 4-5, 8-9: TeamDashboard component and JSX structure.
 // Author: Christian Ishimwe
 interface Member {
   name: string;
@@ -12,7 +13,7 @@ interface Member {
   bio?: string;
 }
 
-const members: Member[] = [
+const initialMembers: Member[] = [
   {
     name: "Alice",
     role: "Backend Developer",
@@ -31,6 +32,11 @@ const members: Member[] = [
 // Author: InezaSamuella
 function TeamDashboard() {
   const [teamScore, setTeamScore] = useState<number>(0);
+  const [members, setMembers] = useState<Member[]>(initialMembers);
+  const [memberFilter, setMemberFilter] = useState<'all' | 'active' | 'inactive'>('all');
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+  // Author: owen-stud123 - Task 46: callback props.
 
   const increaseScore = () => {
     setTeamScore((currentScore) => currentScore + 1);
@@ -44,16 +50,51 @@ function TeamDashboard() {
   const [newMemberName, setNewMemberName] = useState<string>('');
 
   // Author: Dominion Yusuf
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewMemberName(e.target.value);
   };
 
   // Author: Dominion Yusuf
-  const handleAddMember = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleAddMember = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Submitted new member name:', newMemberName);
+    const trimmedName = newMemberName.trim();
+
+    if (!trimmedName) {
+      return;
+    }
+
+    setMembers((currentMembers) => [
+      ...currentMembers,
+      {
+        name: trimmedName,
+        role: 'New Member',
+        tasksCompleted: 0,
+        isActive: true,
+      },
+    ]);
     setNewMemberName(''); // Clear the input
   };
+
+  const removeMember = (memberName: string) => {
+    setMembers((currentMembers) => currentMembers.filter((member) => member.name !== memberName));
+  };
+
+  const toggleMemberStatus = (memberName: string) => {
+    setMembers((currentMembers) => currentMembers.map((member) => (
+      member.name === memberName ? { ...member, isActive: !member.isActive } : member
+    )));
+  };
+
+  const visibleMembers = members.filter((member) => {
+    const matchesFilter = memberFilter === 'all'
+      || (memberFilter === 'active' && member.isActive)
+      || (memberFilter === 'inactive' && !member.isActive);
+    const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+    return matchesFilter && matchesSearch;
+  });
+
+  // Author: owen-stud123 - Tasks 47-49: member controls.
 
   return (
     <>
@@ -82,11 +123,36 @@ function TeamDashboard() {
         </form>
       </section>
 
+      <section className="member-controls" aria-label="Member controls">
+        <label htmlFor="memberSearch">Search members</label>
+        <input
+          id="memberSearch"
+          type="search"
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          placeholder="Search by name"
+        />
+        <div className="filter-controls" aria-label="Filter members">
+          {(['all', 'active', 'inactive'] as const).map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              className={memberFilter === filter ? 'selected-filter' : ''}
+              onClick={() => setMemberFilter(filter)}
+            >
+              {filter[0].toUpperCase() + filter.slice(1)}
+            </button>
+          ))}
+        </div>
+      </section>
+
       <div className="member-grid">
-        {members.map((member) => (
+        {visibleMembers.map((member) => (
           <MemberCard
             key={member.name}
             {...member}
+            onRemove={removeMember}
+            onToggleStatus={toggleMemberStatus}
           />
         ))}
       </div>

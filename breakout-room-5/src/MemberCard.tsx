@@ -3,9 +3,9 @@
 import type { CSSProperties } from 'react';
 
 // Author: Alice Uwase
-// @ts-ignore CSS files are handled by the bundler and do not have TypeScript declarations.
 import './MemberCard.css';
 
+// Author: owen-stud123 - Task 10: reusable component.
 interface MemberCardProps {
     name: string;
     // Updated by: Christian Ishimwe
@@ -16,10 +16,13 @@ interface MemberCardProps {
     isActive: boolean;
     // Author: Benigne Uwitonze
     bio?: string;
+    onRemove: (memberName: string) => void;
+    onToggleStatus: (memberName: string) => void;
 }
 
-// Updated by:  Christian Ishimwe
-function MemberCard({ name, role = "Team Member", tasksCompleted, isActive, bio }: MemberCardProps) {
+  // Author: owen-stud123 - Tasks 46-50: final integration.
+  // Updated by:  Christian Ishimwe
+  function MemberCard({ name, role = "Team Member", tasksCompleted, isActive, bio, onRemove, onToggleStatus }: MemberCardProps) {
   // Author: Benigne Uwitonze - Task 27
   const cardStyle: CSSProperties = { marginBottom: '10px' };
 
@@ -37,6 +40,14 @@ function MemberCard({ name, role = "Team Member", tasksCompleted, isActive, bio 
   Status: {isActive ? 'Active' : 'Inactive'}
 </p>
         {bio && <p className="member-bio">Bio: {bio}</p>}
+        <div className="member-actions">
+          <button type="button" onClick={() => onToggleStatus(name)}>
+            Mark as {isActive ? 'inactive' : 'active'}
+          </button>
+          <button type="button" className="remove-button" onClick={() => onRemove(name)}>
+            Remove
+          </button>
+        </div>
        </div>
     );
 }
