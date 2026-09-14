@@ -1,0 +1,14 @@
+/* Author: Benigne Uwitonze - Task 30 */
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+@media (max-width: 600px) {
+  .member-grid {
+    grid-template-columns: 1fr;
+  }
+}
