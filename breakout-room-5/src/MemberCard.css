@@ -45,3 +45,11 @@
 .member-status.inactive {
   color: gray;
 }
+
+/* Author: Benigne Uwitonze - Task 29 */
+@media (max-width: 600px) {
+  .member-card {
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+  }
+}
