@@ -6,7 +6,12 @@ function TeamDashboard() {
     <>
       <h1>Team Dashboard</h1>
       <p>This application helps manage</p>
-        <MemberCard />
+        <MemberCard 
+        name="Alice"
+        role="Backend Developer"
+        tasksCompleted={12}
+        />
+
     </>
   );
 }
