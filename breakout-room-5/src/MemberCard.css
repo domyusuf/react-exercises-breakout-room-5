@@ -1,0 +1,38 @@
+/* Author: Alice Uwase */
+
+.member-card {
+  width: 280px;
+  padding: 20px;
+  margin: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+}
+
+.member-name {
+  margin: 0 0 8px;
+  color: #1e293b;
+}
+
+.highlighted {
+  letter-spacing: 0.5px;
+}
+
+.member-role {
+  color: #eb25c0;
+}
+
+.member-tasks {
+  margin: 8px 0;
+  color: #475569;
+}
+
+.member-status {
+  font-weight: 600;
+}
+
+.member-bio {
+  color: #64748b;
+  font-style: italic;
+}
