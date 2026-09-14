@@ -2,7 +2,8 @@
 
 interface MemberCardProps {
     name: string;
-    role: string;
+    // Updated by: Christian Ishimwe
+   role?: string;
     // Author: Alice Uwase
     tasksCompleted: number;
     // Author: Ineza Samuella
@@ -11,8 +12,8 @@ interface MemberCardProps {
     bio?: string;
 }
 
-
-function MemberCard({ name, role,tasksCompleted,isActive,bio }: MemberCardProps) {
+// Updated by:  Christian Ishimwe
+function MemberCard({ name, role = "Team Member", tasksCompleted, isActive, bio }: MemberCardProps) {
     return (
        <div>
         <h3>{name}</h3>
