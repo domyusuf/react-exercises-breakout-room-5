@@ -36,3 +36,12 @@
   color: #64748b;
   font-style: italic;
 }
+
+/* Author: Benigne Uwitonze - Task 26 */
+.member-status.active {
+  color: green;
+}
+
+.member-status.inactive {
+  color: gray;
+}

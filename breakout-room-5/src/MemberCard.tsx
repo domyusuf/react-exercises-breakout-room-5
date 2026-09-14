@@ -26,8 +26,11 @@ function MemberCard({ name, role = "Team Member", tasksCompleted, isActive, bio 
         {/*Author: Alice Uwase */}
         <p className='member-tasks'>Task Completed: {tasksCompleted}</p>
 
-        {/* Author: Ineza Samuella */}
-        <p className='member-status'>Status: {isActive ? 'Active' : 'Inactive'}</p>
+        {/* Author: Benigne Uwitonze - Task 26 */}
+        {/* Author: Benigne Uwitonze - Task 26 */}
+<p className={`member-status ${isActive ? 'active' : 'inactive'}`}>
+  Status: {isActive ? 'Active' : 'Inactive'}
+</p>
         {bio && <p className="member-bio">Bio: {bio}</p>}
        </div>
     );
