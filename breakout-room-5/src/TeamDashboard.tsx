@@ -10,6 +10,13 @@ function TeamDashboard() {
         name="Alice"
         role="Backend Developer"
         tasksCompleted={12}
+        isActive={true}
+        />
+        <MemberCard
+        name="Samuella"
+        role="UI/UX Designer"
+        tasksCompleted={5}
+        isActive={false}
         />
 
     </>
